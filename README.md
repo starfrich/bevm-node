@@ -25,9 +25,8 @@ This script automates the setup process for running a BEVM node using Docker on 
 ---
 
 **Note:** 
-- Make sure to replace `/var/lib/node_bevm_test_storage` with your chosen host mapping path during setup.
 - When prompted, enter your desired node name. Recommended using your **EVM address**.
-
+  ![image](https://github.com/starfrich/bevm-node/assets/119293469/2d7a889f-e836-4bfb-ba3a-283b698ab201)
 ## Documentation
 
 [BEVM Docs](https://documents.bevm.io/)
