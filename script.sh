@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # Check if Docker is already installed
-if command -v docker &> /dev/null
-then
+if command -v docker &> /dev/null; then
     echo "Docker is already installed. Skipping installation."
 else
     # Download and run the Docker installation script
@@ -14,8 +13,7 @@ mkdir -p /var/lib/node_bevm_test_storage
 path="/var/lib/node_bevm_test_storage"
 
 # Fetch the Docker image if not already present
-if sudo docker images | grep -q "btclayer2/bevm:v0.1.1"
-then
+if sudo docker images | grep -q "btclayer2/bevm:v0.1.1"; then
     echo "Docker image btclayer2/bevm:v0.1.1 is already present. Skipping image download."
 else
     sudo docker pull btclayer2/bevm:v0.1.1
