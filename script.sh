@@ -8,6 +8,11 @@ else
     wget https://raw.githubusercontent.com/docker/docker-install/master/docker-install.sh -O - | sudo sh
 fi
 
+# Load environment variables from .env file
+if [ -f .env ]; then
+    export $(grep -v '^#' .env | xargs)
+fi
+
 # Establish a host mapping path
 mkdir -p /var/lib/node_bevm_test_storage
 path="/var/lib/node_bevm_test_storage"
@@ -20,8 +25,9 @@ else
 fi
 
 # Run the Docker container
-read -p "Enter your desired node name: " node_name
-telemetry_url="wss://telemetry.bevm.io/submit 0"
+read -p "Enter your desired node name (or press Enter to use the default from .env): " user_node_name
+node_name=${user_node_name:-$NODE_NAME}
+telemetry_url=${TELEMETRY_URL:-"wss://telemetry.bevm.io/submit 0"}
 
 echo "Running Docker container with the following parameters:"
 echo "Host mapping path: $path"
