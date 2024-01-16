@@ -24,6 +24,12 @@ fi
 # Run the Docker container
 read -p "Enter your desired node name: " node_name
 telemetry_url="wss://telemetry.bevm.io/submit 0"
+
+echo "Running Docker container with the following parameters:"
+echo "Host mapping path: $path"
+echo "Node name: $node_name"
+echo "Telemetry URL: $telemetry_url"
+
 sudo docker run -d -v $path:/root/.local/share/bevm btclayer2/bevm:v0.1.1 bevm "--chain=testnet" "--name=$node_name" "--pruning=archive" --telemetry-url "$telemetry_url"
 
 echo "Docker setup completed. Your node name is: $node_name"
